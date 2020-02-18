@@ -1,0 +1,25 @@
+{
+  "name": "xakepehok/path",
+  "description": "Enum Helper with switch-case alternative and more",
+  "keywords": ["enum", "helper", "switch", "case", "switch-case", "value-object", "guard", "associative"],
+  "type": "library",
+  "minimum-stability": "stable",
+  "license": "BSD-3-Clause",
+  "authors": [
+    {
+      "name": "Timur Kasumov aka XAKEPEHOK",
+      "email": "icq-475204@ya.ru"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "XAKEPEHOK\\Path\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=7.2.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "8"
+  }
+}
