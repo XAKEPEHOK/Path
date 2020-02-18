@@ -1,7 +1,7 @@
 {
   "name": "xakepehok/path",
-  "description": "Enum Helper with switch-case alternative and more",
-  "keywords": ["enum", "helper", "switch", "case", "switch-case", "value-object", "guard", "associative"],
+  "description": "Util for filesystem path navigation",
+  "keywords": ["path", "util", "navaigation"],
   "type": "library",
   "minimum-stability": "stable",
   "license": "BSD-3-Clause",
@@ -14,6 +14,11 @@
   "autoload": {
     "psr-4": {
       "XAKEPEHOK\\Path\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "XAKEPEHOK\\Path\\": "tests/"
     }
   },
   "require": {

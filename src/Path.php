@@ -1,6 +1,5 @@
 <?php
 /**
- * Created for Path
  * Datetime: 18.02.2020 17:27
  * @author Timur Kasumov aka XAKEPEHOK
  */
@@ -11,10 +10,11 @@ namespace XAKEPEHOK\Path;
 class Path
 {
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $path;
+
+    /** @var string */
+    private $separator;
 
     /**
      * Path constructor.
@@ -22,8 +22,16 @@ class Path
      */
     public function __construct($path)
     {
-        $path = str_replace('\\', '/', $path);
-        $this->path = rtrim((string) $path, '/');
+        $chars = preg_split('//u', (string) $path, null, PREG_SPLIT_NO_EMPTY);
+        foreach ($chars as $char) {
+            if (in_array($char, ['/', '\\'] , true)) {
+                $this->separator = $char;
+                $path = str_replace(['/', '\\'], $this->separator, $path);
+                break;
+            }
+        }
+
+        $this->path = rtrim((string) $path, $this->separator);
     }
 
     public function up(): self
@@ -32,8 +40,8 @@ class Path
             return $this;
         }
 
-        $parts = explode('/', $this->path);
-        return new Path(implode('/', array_slice($parts, 0, -1)));
+        $parts = explode($this->separator, $this->path);
+        return new Path(implode($this->separator, array_slice($parts, 0, -1)));
     }
 
     /**
@@ -42,22 +50,14 @@ class Path
      */
     public function down($path): self
     {
-        $path = ltrim((string) $path, '/');
-        return new Path($this->path . '/' . $path);
+        $path = ltrim((string) $path, '/\\');
+        return new Path($this->path . $this->separator . $path);
     }
 
     public function end(): string
     {
-        $parts = explode('/', $this->path);
+        $parts = explode($this->separator, $this->path);
         return end($parts);
-    }
-
-    /**
-     * @return string
-     */
-    public function toString(): string
-    {
-        return $this->path;
     }
 
     public function __toString()
