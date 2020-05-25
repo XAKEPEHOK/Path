@@ -94,7 +94,7 @@ class PathTest extends TestCase
     public function endDataProvider(): array
     {
         return [
-            [new Path('/'), ''],
+            [new Path('/'), null],
             [new Path('C:\\Windows\\System32'), 'System32'],
             [new Path('C:\\Windows/System32'), 'System32'],
             [new Path('/etc/hosts'), 'hosts'],
@@ -105,14 +105,15 @@ class PathTest extends TestCase
     /**
      * @dataProvider endDataProvider
      * @param $path
-     * @param string $expected
+     * @param string|null $expected
      */
-    public function testEnd(Path $path, string $expected)
+    public function testEnd(Path $path, ?string $expected)
     {
-        $this->assertSame(
-            $expected,
-            (string) $path->end()
-        );
+        if (is_null($expected)) {
+            $this->assertNull($path->end());
+        } else {
+            $this->assertEquals(new FileName($expected), $path->end());
+        }
     }
 
 }

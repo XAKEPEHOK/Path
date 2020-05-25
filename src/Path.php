@@ -54,10 +54,14 @@ class Path
         return new Path($this->path . $this->separator . $path);
     }
 
-    public function end(): string
+    public function end(): ?FileName
     {
         $parts = explode($this->separator, $this->path);
-        return end($parts);
+        $end = end($parts);
+        if ($end === '') {
+            return null;
+        }
+        return new FileName($end);
     }
 
     public function __toString()
