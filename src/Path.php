@@ -7,6 +7,9 @@
 namespace XAKEPEHOK\Path;
 
 
+use Composer\Autoload\ClassLoader;
+use ReflectionClass;
+
 class Path
 {
 
@@ -67,6 +70,12 @@ class Path
     public function __toString()
     {
         return $this->path;
+    }
+
+    public static function root(): Path
+    {
+        $reflection = new ReflectionClass(ClassLoader::class);
+        return (new Path($reflection->getFileName()))->up()->up()->up();
     }
 
 }
