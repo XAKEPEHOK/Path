@@ -25,7 +25,7 @@ class Path
      */
     public function __construct($path)
     {
-        $chars = preg_split('//u', (string) $path, null, PREG_SPLIT_NO_EMPTY);
+        $chars = preg_split('//u', (string) $path, 0, PREG_SPLIT_NO_EMPTY);
         foreach ($chars as $char) {
             if (in_array($char, ['/', '\\'] , true)) {
                 $this->separator = $char;
