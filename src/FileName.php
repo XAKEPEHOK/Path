@@ -21,6 +21,11 @@ class FileName
         if (empty($name)) {
             throw new EmptyFileNameException('File name should not be empty');
         }
+
+        if (preg_match('~[/\\\]~u', $name)) {
+            throw new FileNameSlashException('File name should not contain slash or backslash');
+        }
+
         $this->name = $name;
     }
 

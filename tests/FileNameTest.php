@@ -12,6 +12,40 @@ use PHPUnit\Framework\TestCase;
 class FileNameTest extends TestCase
 {
 
+    public function testConstructEmpty()
+    {
+        $this->expectException(EmptyFileNameException::class);
+        new FileName('');
+    }
+
+    public function slashDataProvider(): array
+    {
+        return [
+            ['file.zip/'],
+            ['/file.zip'],
+            ['//file.zip'],
+            ['file.zip//'],
+            ['\\file.zip'],
+            ['file.zip\\'],
+            ['file\.zip'],
+            ['../file.zip'],
+            ['..\file.zip'],
+            ['/////'],
+            ['\\\\\\'],
+        ];
+    }
+
+    /**
+     * @dataProvider slashDataProvider
+     * @param string $name
+     * @return void
+     */
+    public function testConstructWithSlash(string $name): void
+    {
+        $this->expectException(FileNameSlashException::class);
+        new FileName($name);
+    }
+
     public function dataProvider(): array
     {
         return [
@@ -21,12 +55,6 @@ class FileNameTest extends TestCase
             ['file.', 'file', ''],
             ['.file', '', 'file'],
         ];
-    }
-
-    public function testConstructEmpty()
-    {
-        $this->expectException(EmptyFileNameException::class);
-        new FileName('');
     }
 
     /**

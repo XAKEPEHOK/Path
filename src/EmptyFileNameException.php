@@ -10,7 +10,7 @@ namespace XAKEPEHOK\Path;
 
 use RuntimeException;
 
-class EmptyFileNameException extends RuntimeException
+class EmptyFileNameException extends RuntimeException implements PathExceptionInterface
 {
 
 }
