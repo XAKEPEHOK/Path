@@ -50,7 +50,7 @@ class PathTest extends TestCase
 
     /**
      * @dataProvider upDataProvider
-     * @param $path
+     * @param Path $path
      * @param string $expected
      */
     public function testUp(Path $path, string $expected)
@@ -80,7 +80,7 @@ class PathTest extends TestCase
 
     /**
      * @dataProvider downDataProvider
-     * @param $path
+     * @param Path $path
      * @param $down
      * @param string $expected
      */
@@ -105,7 +105,7 @@ class PathTest extends TestCase
 
     /**
      * @dataProvider endDataProvider
-     * @param $path
+     * @param Path $path
      * @param string|null $expected
      */
     public function testEnd(Path $path, ?string $expected)
@@ -115,6 +115,28 @@ class PathTest extends TestCase
         } else {
             $this->assertEquals(new FileName($expected), $path->end());
         }
+    }
+
+    /**
+     * @dataProvider pathDataProvider
+     * @param string|Path $path
+     * @param string $expected
+     */
+    public function testToString($path, string $expected)
+    {
+        $path = new Path($path);
+        $this->assertSame($expected, (string) $path);
+    }
+
+    /**
+     * @dataProvider pathDataProvider
+     * @param string|Path $path
+     * @param string $expected
+     */
+    public function testJsonSerialize($path, string $expected)
+    {
+        $path = new Path($path);
+        $this->assertSame(json_encode($expected), json_encode($path));
     }
 
 }

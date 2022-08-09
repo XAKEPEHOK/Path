@@ -90,4 +90,14 @@ class FileNameTest extends TestCase
         $file = new FileName($fullName);
         $this->assertSame($fullName, (string) $file);
     }
+
+    /**
+     * @dataProvider dataProvider
+     * @param string $fullName
+     */
+    public function testJsonSerialize(string $fullName)
+    {
+        $file = new FileName($fullName);
+        $this->assertSame(json_encode($fullName), json_encode($file));
+    }
 }

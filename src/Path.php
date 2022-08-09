@@ -8,9 +8,10 @@ namespace XAKEPEHOK\Path;
 
 
 use Composer\Autoload\ClassLoader;
+use JsonSerializable;
 use ReflectionClass;
 
-class Path
+class Path implements JsonSerializable
 {
 
     /** @var string */
@@ -68,7 +69,7 @@ class Path
         return new FileName($end);
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->path;
     }
@@ -79,4 +80,8 @@ class Path
         return (new Path($reflection->getFileName()))->up()->up()->up();
     }
 
+    public function jsonSerialize(): string
+    {
+        return $this->path;
+    }
 }

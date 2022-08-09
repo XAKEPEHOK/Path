@@ -8,7 +8,9 @@
 namespace XAKEPEHOK\Path;
 
 
-class FileName
+use JsonSerializable;
+
+class FileName implements JsonSerializable
 {
 
     /**
@@ -51,9 +53,13 @@ class FileName
         return substr($this->name, strrpos($this->name, '.') + 1);
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->name;
     }
 
+    public function jsonSerialize(): string
+    {
+        return $this->name;
+    }
 }
