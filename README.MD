@@ -1,4 +1,4 @@
-# Path
+# Path [![Build Status](https://travis-ci.com/XAKEPEHOK/Path.svg?branch=master)](https://travis-ci.com/XAKEPEHOK/Path)
 Path class help you easy manipulate to any path (unix-style, windows-style, uri path), going up and down, extract last
 path item, detect project root and more. This lib not work with file system. Its just help you manipulate path string. 
 
