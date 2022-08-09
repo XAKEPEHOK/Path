@@ -37,7 +37,7 @@ echo $path->down($subPath);
 echo $path->up()->down('down_1/down_2')->up()->down($subPath);
 ```
 
-### windows-style path:
+### Windows-style path:
 ```php
 $path = new \XAKEPEHOK\Path\Path('C:\\Windows');
 
@@ -63,27 +63,7 @@ echo $path->down($subPath);
 echo $path->up()->down('Program Files\\Microsoft')->up()->down($subPath);
 ```
 
-### uri path (works like unix-style path):
-```php
-$path = new \XAKEPEHOK\Path\Path('https://example.com/path');
-
-# https://example.com
-echo $path->up(); 
-
-# https://example.com/path/dir_1/dir_2
-echo $path->down('dir_1')->down('dir_2'); 
-
-# https://example.com/path/down_1/down_2
-echo $path->down('down_1/down_2'); 
-
-# Backslash will be replaced by slash, because path already contain slash
-# https://example.com/path/down_1/down_2
-echo $path->down('down_1\down_2'); 
-
-$subPath = new \XAKEPEHOK\Path\Path('dir_1/dir_2')
-```
-
-### uri path (works like unix-style path):
+### Uri path (works like unix-style path):
 ```php
 $path = new \XAKEPEHOK\Path\Path('https://example.com/path');
 
