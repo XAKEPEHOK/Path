@@ -125,6 +125,7 @@ echo $filename->hasExtension(); //bool true if file has extension
 
 ## Detect project root path
 ```php
-# Return you project root path. Its detected by composer placement of \Composer\Autoload\ClassLoader.php
+# Return you project root path (dir that contain composer's vendor dir).
+# Its detected by reflection of \Composer\Autoload\ClassLoader.php placement
 $path = \XAKEPEHOK\Path\Path::root();
 ```
