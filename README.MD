@@ -21,6 +21,10 @@ echo $path->up();
 # /any/path/here/down_1/down_2
 echo $path->down('down_1')->down('down_2'); 
 
+# Ending or double slashes will be removed
+# /any/path/here/down_1/down_2
+echo $path->down('/down_1/')->down('/down_2/'); 
+
 # /any/path/here/down_1/down_2
 echo $path->down('down_1/down_2'); 
 
@@ -46,6 +50,10 @@ echo $path->up();
 
 # C:\Windows\System32\drivers
 echo $path->down('System32')->down('drivers'); 
+
+# Ending or double backslashes will be removed
+# C:\Windows\System32\drivers
+echo $path->down('\\System32\\')->down('\\drivers\\'); 
 
 # C:\Windows\System32\drivers
 echo $path->down('System32\drivers'); 

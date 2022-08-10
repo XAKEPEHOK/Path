@@ -17,6 +17,7 @@ class PathTest extends TestCase
         return [
             ['C:\\Windows\\System32', 'C:\\Windows\\System32'],
             ['C:\\Windows/System32', 'C:\\Windows\\System32'],
+            ['C:\\Windows/System32\\', 'C:\\Windows\\System32'],
             ['/etc/hosts', '/etc/hosts'],
             ['etc/hosts', 'etc/hosts'],
             [new Path('C:\\Windows\\System32'), 'C:\\Windows\\System32'],
@@ -66,6 +67,7 @@ class PathTest extends TestCase
         return [
             [new Path('/'), 'down', '/down'],
             [new Path('up'), 'down', 'up/down'],
+            [new Path('up/'), '/down/', 'up/down'],
             [new Path('C:\\Windows\\System32'), 'down', 'C:\\Windows\\System32\\down'],
             [new Path('C:\\Windows/System32'), 'down', 'C:\\Windows\\System32\\down'],
             [new Path('C:\\Windows\\System32'), new Path('down\\down'), 'C:\\Windows\\System32\\down\\down'],
