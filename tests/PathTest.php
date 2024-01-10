@@ -68,6 +68,7 @@ class PathTest extends TestCase
             [new Path('/'), 'down', '/down'],
             [new Path('up'), 'down', 'up/down'],
             [new Path('up/'), '/down/', 'up/down'],
+            [new Path('empty/argument'), '', 'empty/argument'],
             [new Path('C:\\Windows\\System32'), 'down', 'C:\\Windows\\System32\\down'],
             [new Path('C:\\Windows/System32'), 'down', 'C:\\Windows\\System32\\down'],
             [new Path('C:\\Windows\\System32'), new Path('down\\down'), 'C:\\Windows\\System32\\down\\down'],

@@ -25,6 +25,10 @@ echo $path->down('down_1')->down('down_2');
 # /any/path/here/down_1/down_2
 echo $path->down('/down_1/')->down('/down_2/'); 
 
+# Empty down will be ignored
+# /any/path/here
+echo $path->down(''); 
+
 # /any/path/here/down_1/down_2
 echo $path->down('down_1/down_2'); 
 
